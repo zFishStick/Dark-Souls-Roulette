@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="../favicon.ico">
+    <link rel="stylesheet" href="./style/playerSection.css">
+    <link rel="stylesheet" href="./style/btnSection.css">
+    <link rel="stylesheet" href="./style/routeSection.css">
+    <link rel="stylesheet" href="./style/main.css">
+    <title>Dark Souls Roulette</title>
+    <style>
+        @font-face {
+            font-family: 'DSFont';
+            src: url('../assets/font/TrajanusBricks.ttf') format('woff2'),
+                 url('../assets/font/TrajanusBricksXtra.ttf') format('woff'),
+                 url('../assets/font/TrajanusBriX-Invers.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        @font-face {
+            font-family: 'OptimusPrinceps';
+            src: url('../assets/font/OptimusPrinceps.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+            font-display: swap;
+        }
+        body {
+            background-image: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)), url('../assets/img/background.png');
+            background-size: cover;
+            color: var(--text-primary);
+            text-align: center;
+            font-family: sans-serif;
+            overflow: hidden;
+        }
+
+        .wheelSection {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 80vh;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            padding-right: 40px;
+
+            #wheelContainer {
+                display: flex;
+                flex-direction: column;
+                width: 400px;
+                align-items: center;
+            }
+
+            .wheelButtonsDiv {
+                display: flex;
+                width: 100%;
+                justify-content: space-evenly;
+            }
+
+            #spinBtn, #escapeBtn {
+                margin-top: 14px;
+                padding: 11px 32px;
+                font-size: 20px;
+                cursor: pointer;
+                background-color: transparent;
+                color: var(--gold);
+                border: 1px solid rgba(201, 162, 39, 0.55);
+                font-weight: bold;
+                border-radius: 2px;
+                font-family: Georgia, 'Times New Roman', Times, serif;
+                letter-spacing: 0.14em;
+                transition: all 0.25s ease;
+                box-shadow: 0 0 12px rgba(201, 162, 39, 0.08);
+
+                &:hover {
+                    background-color: var(--gold);
+                    color: #000;
+                    box-shadow: 0 0 20px rgba(201, 162, 39, 0.3);
+                }
+            }
+
+            #escapeBtn {
+                background-color: transparent;
+                color: rgba(228, 57, 57, 0.55);
+                border: 1px solid rgba(193, 48, 48, 0.55);
+                box-shadow: 0 0 12px rgba(193, 48, 48, 0.08);
+
+                &:hover {
+                    background-color: #761d1d;
+                    box-shadow: 0 0 20px rgba(193, 48, 48, 0.3);
+                }
+            }
+
+            #wheelTimes {
+                font-size: 16px;
+                margin-bottom: 10px;
+                color: var(--text-secondary);
+                letter-spacing: 0.06em;
+            }
+
+            #warningMsg {
+                font-size: 14px;
+                color: #c13030;
+                margin-bottom: 20px;
+                margin-top: 0;
+                display: none;
+                letter-spacing: 0.03em;
+                text-shadow: 0 0 8px rgba(193, 48, 48, 0.4);
+            }
+        }
+
+        #wheelWrapper {
+            position: relative;
+            width: 400px;
+            height: 400px;
+        }
+
+        #spinPointer {
+            position: absolute;
+            right: -45px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 48px;
+            color: var(--gold);
+            font-weight: bold;
+            text-shadow: 0 0 12px var(--gold-glow);
+            pointer-events: none;
+            user-select: none;
+        }
+
+        h1 {
+            font-family: 'DSFont', sans-serif;
+            color: var(--gold);
+            text-shadow: 0 0 20px var(--gold-glow), 0 2px 4px rgba(0,0,0,0.8);
+            letter-spacing: 0.04em;
+            font-size: 2.6rem;
+            margin-bottom: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="main" id="mainSection">
+        <div class="title row">
+            <h1>Dark Souls Roulette</h1>
+        </div>
+
+        <div class="row main-container">
+            <div class="left-column">
+                <section class="playerSection">
+                    <div id="playerSection"></div>
+                    <div id="btnSection"></div>
+                </section>
+            
+            <section class="settingsSection">
+                <div id="settingsDiv"></div>
+            </section>
+            </div>
+
+            <section class="wheelSection">
+                <div id="wheelContainer">
+                    <p id="wheelTimes">Wheel Spins Left: 5</p>
+                    <p id="warningMsg">After this spin, you will encounter a boss! <br> Upgrade your stats now.</p>
+                    <div id="wheelWrapper">
+                        <canvas id="canvas" width="400" height="400">
+                            Il tuo browser non supporta il canvas.
+                        </canvas>
+                        <div id="spinPointer">◀</div>
+                    </div>
+                    <div class="wheelButtonsDiv" id="wheelButtonsDiv">
+                        <button id="spinBtn">SPIN</button>
+                    </div>
+                    
+                </div>
+            </section>
+
+            <section id="routeSection">
+                <div id="routeDiv" class="routeDiv"></div>
+                <div id="bossDiv" class="bossDiv"></div>
+            </section>
+        </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    
+    <script src="https://cdn.jsdelivr.net/gh/zarocknz/javascript-winwheel/Winwheel.min.js"></script>   
+
+    <script type="module" src="scripts/GameBuilder.js"></script>
+</body>
+</html>

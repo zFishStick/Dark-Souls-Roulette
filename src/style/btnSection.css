@@ -1,0 +1,117 @@
+
+@font-face {
+    font-family: 'DSFont';
+    src: url('../assets/font/TrajanusBricks.ttf') format('woff2'),
+            url('../assets/font/TrajanusBricksXtra.ttf') format('woff'),
+            url('../assets/font/TrajanusBriX-Invers.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+#btnSection {
+    background-color: var(--bg-card);
+    border: var(--border);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    padding: 16px;
+    border-radius: 3px;
+    width: 85%;
+    box-shadow: var(--shadow);
+
+    h2 {
+        color: var(--gold);
+        font-family: Georgia, 'Times New Roman', Times, serif;
+        font-size: 18px;
+        letter-spacing: 0.08em;
+        margin: 0 0 4px 0;
+    }
+
+    button {
+        background-color: transparent;
+        color: var(--text-primary);
+        border: var(--border);
+        padding: 10px 20px;
+        font-family: Georgia, 'Times New Roman', Times, serif;
+        font-size: 15px;
+        cursor: pointer;
+        transition: all 0.25s ease;
+        width: 100%;
+        letter-spacing: 0.04em;
+        border-radius: 2px;
+
+        &:hover {
+            background-color: var(--gold-dim);
+            border-color: var(--gold);
+            color: var(--gold);
+        }
+
+        &.error {
+            border-color: rgba(193, 48, 48, 0.6);
+            color: #c13030;
+            background-color: rgba(139, 0, 0, 0.12);
+        }
+    }
+}
+
+.mute-div {
+    background-color: var(--bg-card);
+    border: var(--border);
+    display: flex;
+    align-items: center;
+    border-radius: 3px;
+    padding: 8px 12px;
+    gap: 12px;
+
+    .mute-img {
+        background-color: var(--bg-card-light);
+        border: 1px solid rgba(201, 162, 39, 0.18);
+        width: 34px;
+        height: auto;
+        cursor: pointer;
+        padding: 5px;
+        border-radius: 3px;
+        transition: all 0.25s ease;
+
+        &:hover {
+            border-color: var(--gold);
+            background-color: var(--gold-dim);
+        }
+
+        &.muted {
+            background-color: rgba(139, 0, 0, 0.2);
+            border-color: rgba(193, 0, 0, 0.4);
+        }
+    }
+}
+
+.bmc-btn {
+    display: flex;
+    align-items: center;
+    background-color: transparent;
+    border: 1px solid rgba(224, 106, 42, 0.45);
+    color: #d4692a;
+    text-decoration: none;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 13px;
+    font-weight: bold;
+    padding: 5px 14px;
+    border-radius: 3px;
+    box-sizing: border-box;
+    transition: all 0.25s ease;
+    white-space: nowrap;
+    letter-spacing: 0.03em;
+    background-color: #ffdd00a0;
+
+    .bmc-btn-img {
+        width: 26px;
+    }
+
+    &:hover {
+        background-color: rgba(224, 106, 42, 0.12);
+        border-color: #d4692a;
+        color: #e07a3a;
+    }
+}
