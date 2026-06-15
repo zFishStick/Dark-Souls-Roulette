@@ -1,5 +1,5 @@
 import { switchButtons } from './SectionBuilder.js';
-import { isMuted } from './settingsBuilder.js';
+import { isMuted } from './SettingsBuilder.js';
 
 export let audio = new Audio('../assets/sfx/tick.wav');
 
