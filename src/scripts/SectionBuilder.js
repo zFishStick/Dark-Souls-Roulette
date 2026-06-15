@@ -29,11 +29,11 @@ export function createPlayerSection() {
         statsDiv.appendChild(statDiv);
     }
 
+    statsDiv.appendChild(createHealthDiv());
+
     let playerItems = document.createElement('div');
     playerItems.classList.add('playerItems');
 
-
-    playerItems.appendChild(createHealthDiv());
     playerItems.appendChild(createEstusFlaskDiv());
     playerItems.appendChild(createTitaniteDiv());
     playerItems.appendChild(createWeaponDiv());

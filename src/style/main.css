@@ -53,30 +53,6 @@
     }
 }
 
-.playerSection {
-    background-color: var(--bg-card);
-    border: var(--border);
-    padding: 20px;
-    border-radius: 3px;
-    color: var(--text-primary);
-    font-family: 'Arial', sans-serif;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
-    height: -webkit-fill-available;
-    box-shadow: var(--shadow), var(--shadow-gold);
-
-    h2 {
-        font-family: 'DSFont', serif;
-        font-size: 22px;
-        color: var(--gold);
-        text-shadow: 0 0 12px var(--gold-glow);
-        letter-spacing: 0.06em;
-        margin: 0;
-    }
-}
-
 .left-column {
     display: flex;
     flex-direction: column;

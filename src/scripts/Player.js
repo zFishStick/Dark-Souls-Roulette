@@ -14,7 +14,7 @@ export class Player {
         this.maxHealth = 0;
         this.items = new Items();
         this.weapon = null;
-        this.upgradeLevel = 0;
+        this.upgradeLevel = 1; //TODO set to 0
         this.class = null;
         this.vitality = 0;
         this.strength = 0;

@@ -17,7 +17,7 @@ import { Boss } from '../Boss.js';
 import { Location } from '../Location.js';
 
 // Adatta questo percorso al tuo progetto (nel tuo codice IMG_PATH era già definito altrove).
-const IMG_PATH = '../assets/img/bosses/';
+const IMG_PATH = 'assets/img/bosses/';
 
 /* ============================================================
    BOSS PRINCIPALI (Area Bosses)  —  health, damage, name, image, winRate

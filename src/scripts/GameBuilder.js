@@ -359,6 +359,10 @@ function removeWinWheelSegments(activeSegments, isMiniboss) {
     if (player.items.estusFlaskLevel == 3) { // max level reached
         activeSegments = activeSegments.filter(s => s !== WIN_ACTIONS.ESTUS_FLASK);
     }
+
+    if (player.weapon.isUnique) {
+        activeSegments = activeSegments.filter(s => s !== WIN_ACTIONS.UNIQUE_WEAPON);
+    }
     
     return activeSegments;
 }
