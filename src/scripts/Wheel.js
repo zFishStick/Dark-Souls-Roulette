@@ -23,20 +23,35 @@ export class Wheel {
     }
 
     _buildSegments() {
-        const count = this.segments.length;
+        const normalized = this.segments.map(s => typeof s === 'string' ? { text: s } : s);
+        const count = normalized.length;
         let base;
         if (typeof this.winRate === 'number' && count >= 2) { // BossFight wheel
-            const favorableSize = (this.winRate * 360) / this.repeat;
-            const otherSize = ((1 - this.winRate) * 360) / ((count - 1) * this.repeat);
-            base = this.segments.map((text, index) => ({
-                'textFontFamily' : 'Georgia',
-                'text'           : this._spaceText(text),
-                'size'           : index === count - 1 ? favorableSize : otherSize
-            }));
+            const lossSegs = normalized.filter(s => s.weight == null);
+            const winSegs  = normalized.filter(s => s.weight != null);
+            if (winSegs.length > 0) {
+                const totalWeight = winSegs.reduce((sum, s) => sum + s.weight, 0);
+                base = normalized.map(s => ({
+                    'textFontFamily' : 'Georgia',
+                    'text'           : this._spaceText(s.text),
+                    'size'           : s.weight == null
+                        ? ((1 - this.winRate) * 360) / (lossSegs.length * this.repeat)
+                        : (this.winRate * 360 * (s.weight / totalWeight)) / this.repeat
+                }));
+            } else {
+                // fallback: last segment is favorable
+                const favorableSize = (this.winRate * 360) / this.repeat;
+                const otherSize = ((1 - this.winRate) * 360) / ((count - 1) * this.repeat);
+                base = normalized.map((s, index) => ({
+                    'textFontFamily' : 'Georgia',
+                    'text'           : this._spaceText(s.text),
+                    'size'           : index === count - 1 ? favorableSize : otherSize
+                }));
+            }
         } else {
-            base = this.segments.map((text) => ({
+            base = normalized.map((s) => ({
                 'textFontFamily' : 'Georgia',
-                'text'           : this._spaceText(text),
+                'text'           : this._spaceText(s.text),
                 'size'           : 360 / (count * this.repeat)
             }));
         }
@@ -60,7 +75,7 @@ export class Wheel {
         this.wheel = new Winwheel({
             'canvasId'      : this.canvasId,
             'numSegments'   : segments.length,
-            'textFontSize'  : segments.length <= 7 ? 18 : 13,
+            'textFontSize'  : segments.length <= 7 ? 20 : 15,
             'textFontFamily': 'Georgia',
             'strokeStyle'   : '#c9a227',
             'lineWidth'     : 1.5,

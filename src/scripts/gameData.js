@@ -23,7 +23,12 @@ const IMG_PATH = "../assets/img/bosses/";
 export const winWheelSegments    = [WIN_ACTIONS.LEVEL_UP_3, WIN_ACTIONS.TITANITE_3, WIN_ACTIONS.ESTUS_FLASK, WIN_ACTIONS.UNIQUE_WEAPON]; //, WIN_ACTIONS.ADD_HELPER];
 export const minibossWinWheelSegments = [MINIBOSS_WIN_ACTIONS.LEVEL_UP_1, MINIBOSS_WIN_ACTIONS.TITANITE_1, MINIBOSS_WIN_ACTIONS.ESTUS_FLASK];
 export const travelWheelSegments = [TRAVEL_ACTIONS.GO_STRAIGHT, TRAVEL_ACTIONS.LEVEL_UP, TRAVEL_ACTIONS.TITANITE, TRAVEL_ACTIONS.GET_DAMAGED, TRAVEL_ACTIONS.INCREASE_ALL_STATS];
-export const bossWheelSegments   = [BOSS_ACTIONS.GET_DAMAGED, BOSS_ACTIONS.ATTACK, BOSS_ACTIONS.CRITICAL_HIT];
+
+export const bossWheelSegments   = [
+    { text: BOSS_ACTIONS.GET_DAMAGED },
+    { text: BOSS_ACTIONS.ATTACK,       weight: 0.8 },
+    { text: BOSS_ACTIONS.CRITICAL_HIT, weight: 0.2 },
+];
 export const classesWheelSegments = classes.map(c => c.name);
 
 
