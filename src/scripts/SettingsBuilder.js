@@ -13,7 +13,7 @@ export function createSettingsSection() {
 
     const muteBtnImage = document.createElement('img');
     muteBtnImage.classList.add('mute-img');
-    muteBtnImage.src = '../assets/img/icons/mute.png';
+    muteBtnImage.src = 'assets/img/icons/mute.png';
     muteBtnImage.alt = 'Mute';
 
     muteBtnImage.onclick = () => {

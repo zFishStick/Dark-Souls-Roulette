@@ -1,7 +1,7 @@
 import { switchButtons } from './SectionBuilder.js';
 import { isMuted } from './SettingsBuilder.js';
 
-export let audio = new Audio('../assets/sfx/tick.wav');
+export let audio = new Audio('assets/sfx/tick.wav');
 
 const THIN_SPACE = ' ';
 
