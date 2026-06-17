@@ -4,6 +4,7 @@ export function showDeathScreen() {
     deathScreen.classList.add('deathScreen');
 
     const message = document.createElement('h2');
+    message.classList.add('deathMessage');
     message.innerText = 'You Died';
     deathScreen.appendChild(message);
 

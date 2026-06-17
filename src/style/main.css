@@ -60,7 +60,7 @@
     width: 500px;
 }
 
-.deathScreen {
+.deathScreen, .winScreen {
     position: absolute;
     z-index: 1000;
     display: flex;
@@ -75,11 +75,19 @@
     transition: opacity 0.5s ease;
     animation: fadeIn 3s forwards normal;
 
-    h2 {
+    .deathMessage {
         font-family: OptimusPrinceps, serif;
         color: #6b0000;
         font-size: 10rem;
         text-shadow: 0 0 40px rgba(139, 0, 0, 0.7), 0 0 80px rgba(139, 0, 0, 0.3);
+        margin: 0;
+    }
+
+    .winMessage {
+        font-family: OptimusPrinceps, serif;
+        color: var(--gold);
+        font-size: 6rem;
+        text-shadow: 0 0 40px var(--gold-glow), 0 0 80px var(--gold-glow);
         margin: 0;
     }
 

@@ -7,6 +7,7 @@ import { updateUI, updateBossUI, clearBossUI, showCanvas, hideCanvas, updateSpin
 import { TRAVEL_ACTIONS, BOSS_ACTIONS, WIN_ACTIONS, MINIBOSS_WIN_ACTIONS } from "./actions.js";
 import { classes, winWheelSegments, minibossWinWheelSegments, travelWheelSegments, bossWheelSegments, classesWheelSegments, debugWheelSegments } from "./gameData.js";
 import { showDeathScreen } from "./deathScreen.js";
+import { showWinScreen } from "./winScreen.js";
 import { showEscapeButton, hideEscapeButton } from "./escapeButton.js";
 
 import { bosses, minibosses, locations } from "./data/BossesLocationsData.js";
@@ -20,6 +21,11 @@ import { hpForVitality } from "./Player.js";
 // setTimeout(() => {
 //     hideEscapeButton();
 // }, 3000);
+
+// show win screen for testing
+setTimeout(() => {
+    showWinScreen();
+}, 3000);
 
 let spinTimes = 5;
 updateSpinCounter(spinTimes);
@@ -259,7 +265,7 @@ function startBossFight(boss, isMiniboss = false) {
                         showWinWheel(() => setTimeout(startTravel, 0));
                     }
                     if (boss.name == "Gwyn, Lord of Cinder") {
-                        alert('Congratulations! You have defeated Gwyn and completed the game!');
+                        showWinScreen();
                     }
                 }
             };
