@@ -17,15 +17,13 @@ import { hpForVitality } from "./Player.js";
 // // debug to show escape button for testing
 // showEscapeButton();
 
-// // wait 3 seconds before enabling the escape button
 // setTimeout(() => {
 //     hideEscapeButton();
 // }, 3000);
 
-// show win screen for testing
-setTimeout(() => {
-    showWinScreen();
-}, 3000);
+// setTimeout(() => {
+//     showWinScreen();
+// }, 3000);
 
 let spinTimes = 5;
 updateSpinCounter(spinTimes);
@@ -290,7 +288,6 @@ function startBossFight(boss, isMiniboss = false) {
 }
 
 export function skipBossFight() {
-    alert('You have chosen to skip the miniboss fight. You will not receive any rewards for this fight.');
     hideEscapeButton();
     clearBossUI();
     if (spinTimes > 0) {
