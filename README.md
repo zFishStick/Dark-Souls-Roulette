@@ -1,3 +1,5 @@
+![Dark Souls Roulette gameplay](assets/preview.gif)
+
 # [ENGLISH VERSION] - Dark Souls Roulette
 
 A roulette-style game inspired by FromSoftware's iconic title *Dark Souls*. The idea for this project came from two things:
